@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ujian Informatika - Hardware &amp; Software</title>
+<style>
+:root{--desk:#E8F3FA;--paper:#F8FCFF;--ink:#0B1F33;--muted:#4A6479;--rule:#C6DCEA;--line:#A9C6DA;--mar:#0077B6;--acc:#0077B6;--accink:#FFFFFF;--grid:rgba(0,119,182,.07);--glow:rgba(0,119,182,.12);--ok:#0B7A4B;--bad:#B3261E;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#040A16;--paper:#0A1424;--ink:#DDEBFA;--muted:#8FA8C4;--rule:#16243B;--line:#22395A;--mar:#22D3EE;--acc:#22D3EE;--accink:#03121C;--grid:rgba(34,211,238,.07);--glow:rgba(34,211,238,.16);--ok:#4ADE9A;--bad:#FF8A8A}}
+:root[data-theme="dark"]{--desk:#040A16;--paper:#0A1424;--ink:#DDEBFA;--muted:#8FA8C4;--rule:#16243B;--line:#22395A;--mar:#22D3EE;--acc:#22D3EE;--accink:#03121C;--grid:rgba(34,211,238,.07);--glow:rgba(34,211,238,.16);--ok:#4ADE9A;--bad:#FF8A8A}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--desk);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.sheet{max-width:680px;min-height:100vh;margin:0 auto;padding:22px 18px 56px;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:26px 26px;border:0 solid var(--line);border-width:0 1px;box-shadow:0 0 44px var(--glow)}
+h1,h2,h3,p{margin:0}button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.big,.tag,.dot,h2.q{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace}
+.tag{color:var(--acc);font-size:13px;letter-spacing:.04em}
+.big{font-size:28px;font-weight:700;margin-top:14px;line-height:1.2}.sub{color:var(--muted);margin-top:6px}.small{font-size:14px;color:var(--muted)}
+.field{margin-top:20px}.field label{display:block;font-weight:600;margin-bottom:6px;font-size:14px;color:var(--muted)}
+input[type=text],input[type=password],input[type=number]{width:100%;font:inherit;font-size:17px;padding:12px;color:var(--ink);background:var(--desk);border:1.5px solid var(--line);border-radius:10px}
+input:focus,textarea:focus{outline:2px solid var(--acc);outline-offset:1px}
+.err{color:var(--bad);min-height:1.5em;margin-top:8px;font-size:15px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:10px;border:1.5px solid var(--acc);background:var(--acc);color:var(--accink);font-weight:700;box-shadow:0 0 16px var(--glow)}
+.btn.g{background:transparent;color:var(--acc);box-shadow:none}.btn.s{min-height:38px;padding:0 14px;font-size:14px}.btn[disabled]{opacity:.35;cursor:default}.w{width:100%;margin-top:16px}
+.link{background:none;border:0;color:var(--muted);text-decoration:underline;min-height:44px;padding:0;margin-top:14px;display:block}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.dot{width:36px;height:36px;padding:0;border-radius:8px;border:1.5px solid var(--line);background:transparent;font-size:14px}.dot.d{background:var(--acc);color:var(--accink);border-color:var(--acc)}.dot.c{outline:2px solid var(--ink);outline-offset:2px;font-weight:700}
+.gb{margin-top:12px;padding:12px;border:1.5px solid var(--line);border-radius:14px;background:var(--desk);text-align:center;box-shadow:inset 0 0 24px var(--glow)}.gb svg{width:100%;max-width:190px;height:auto}
+.q{margin-top:14px;font-size:18px;font-weight:500;line-height:1.6}
+textarea{display:block;width:100%;min-height:128px;margin-top:8px;padding:12px;font:inherit;font-size:17px;line-height:1.5;color:var(--ink);background:var(--desk);border:1.5px solid var(--line);border-radius:12px;resize:vertical}
+.box{margin-top:18px;padding:14px;border:1.5px dashed var(--line);border-radius:12px;background:var(--desk)}
+.th{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.th div{width:100px;display:grid;gap:6px}.th img{width:100px;height:100px;object-fit:cover;border-radius:8px;border:1.5px solid var(--line)}
+.foot{display:flex;gap:10px;margin-top:24px}.foot .btn{flex:1}
+.ok{color:var(--ok);font-weight:600}.no{color:var(--bad);font-weight:600}
+.item{margin-top:22px;padding-top:16px;border-top:1.5px solid var(--line)}
+.key{margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--desk);border-left:3px solid var(--acc);font-size:14px}.ans{margin-top:6px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--desk);white-space:pre-wrap;overflow-wrap:anywhere}
+.item img.f{display:block;max-width:100%;margin-top:8px;border-radius:8px;border:1.5px solid var(--line);background:#fff}
+.sr{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}.sr input{width:84px;padding:8px}
+.thanks{margin-top:24px;padding:16px;border:1.5px solid var(--acc);border-radius:14px;background:var(--desk);box-shadow:0 0 22px var(--glow);font-size:17px;line-height:1.6}
+.bar{position:sticky;bottom:0;display:flex;justify-content:space-between;gap:10px;padding:12px 4px calc(12px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:1.5px solid var(--acc);margin-top:20px}
+.list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}.list .btn{width:100%;justify-content:space-between;text-align:left;background:var(--desk);color:var(--ink);border-color:var(--line);font-weight:500;box-shadow:none}
+table{border-collapse:collapse;min-width:100%;font-size:14px}th,td{padding:8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}.tw{overflow-x:auto;margin-top:14px}
+</style></head><body><main class="sheet" id="app"></main>
+<script>
+const JUDUL="Ujian Informatika",SUB="Hardware & Software",N=15,MAX=10,KODE_GURU="guru2026",KODE="hs-1",MAKS_FOTO=3;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>String(s||"").trim().toLowerCase().replace(/\s+/g," ");
+const nz=s=>String(s||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function rng(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuf(a,r){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function gbr(e,cap){return '<svg viewBox="0 0 220 180" role="img" aria-label="Gambar soal" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="212" height="172" rx="18" style="fill:var(--paper);stroke:var(--line)" stroke-width="2"/><text x="110" y="'+(cap?82:95)+'" font-size="80" text-anchor="middle" dominant-baseline="middle">'+e+'</text>'+(cap?'<text x="110" y="152" font-size="17" text-anchor="middle" style="fill:var(--ink)" font-weight="600">'+esc(cap)+'</text>':'')+'</svg>'}
+
+/* ===== BANK SOAL ===== */
+const J=["input","output","penyimpanan"];
+const HW=[["mouse","🖱️",["mouse","tetikus"],"input","Mouse"],["keyboard","⌨️",["keyboard","papanketik"],"input","Keyboard"],["monitor","🖥️",["monitor","layar"],"output","Monitor"],["printer","🖨️",["printer"],"output","Printer"],["speaker","🔊",["speaker","pengeraskeras","pengerassuara"],"output","Speaker"],["headset","🎧",["headset","headphone","earphone"],"","Headphone/headset"],["webcam","📷",["webcam","kamera","camera"],"input","Webcam/kamera"],["mikrofon","🎤",["mikrofon","microphone","mic"],"input","Mikrofon"],["cd","💿",["cd","dvd","cakram"],"penyimpanan","CD/DVD"],["joystick","🕹️",["joystick","gamepad"],"input","Joystick"],["disket","💾",["disket","floppy"],"penyimpanan","Disket (floppy disk)"]];
+const TH=[["Apa kepanjangan dari CPU?",["centralprocessingunit"],"Central Processing Unit"],["Komponen apa yang disebut 'otak komputer' karena memproses semua perintah?",["cpu","prosesor","processor"],"CPU / prosesor"],["Apa nama memori sementara komputer yang isinya hilang saat komputer dimatikan? (jawab dengan singkatan)",["ram"],"RAM"],["Apa kepanjangan dari RAM?",["randomaccessmemory"],"Random Access Memory"],["Apa nama papan sirkuit utama tempat semua komponen komputer dipasang dan saling terhubung?",["motherboard","mainboard","papaninduk"],"Motherboard"],["Apa nama alat yang mengubah dokumen kertas menjadi file digital?",["scanner","pemindai"],"Scanner"],["Komponen apa yang memasok listrik ke seluruh bagian komputer?",["powersupply","psu","catudaya"],"Power supply (PSU)"],["Apa kepanjangan dari SSD?",["solidstatedrive"],"Solid State Drive"],["Apa kepanjangan dari GPU?",["graphicsprocessingunit","graphicprocessingunit"],"Graphics Processing Unit"],["Apa bahasa Inggris dari 'perangkat keras'?",["hardware"],"Hardware"],["Apa nama penyimpanan permanen di dalam komputer yang memakai piringan magnetik? (nama umum)",["harddisk","hdd"],"Hard disk (HDD)"],["1024 megabyte sama dengan 1 …? (satuan)",["gb","gigabyte"],"Gigabyte (GB)"],["Apa nama hardware output untuk mencetak dokumen di atas kertas?",["printer"],"Printer"],["Alat input yang dipakai untuk menggerakkan penunjuk (kursor) di layar adalah …",["mouse","tetikus"],"Mouse"],["Alat output yang menampilkan hasil kerja komputer berupa gambar dan tulisan disebut …",["monitor","layar"],"Monitor"],["Apa kepanjangan dari USB?",["universalserialbus"],"Universal Serial Bus"],["Apa kepanjangan dari HDD?",["harddiskdrive"],"Hard Disk Drive"],["Apa kepanjangan dari ROM?",["readonlymemory"],"Read Only Memory"],["Apa kepanjangan dari LCD?",["liquidcrystaldisplay"],"Liquid Crystal Display"],["Alat input yang dipakai untuk merekam suara disebut …",["mikrofon","microphone","mic"],"Mikrofon"],["Alat output yang mengeluarkan suara dari komputer disebut …",["speaker","pengeraskeras","pengerassuara"],"Speaker"],["Penyimpanan portabel kecil yang dicolok ke port USB disebut …",["flashdisk","flashdrive"],"Flashdisk"],["Keyboard, mouse, dan scanner termasuk hardware jenis apa? (input, output, atau penyimpanan)",["input"],"Input",["output","penyimpanan"]],["Monitor, printer, dan speaker termasuk hardware jenis apa? (input, output, atau penyimpanan)",["output"],"Output",["input","penyimpanan"]],["Hard disk, SSD, dan flashdisk termasuk hardware jenis apa? (input, output, atau penyimpanan)",["penyimpanan","storage"],"Penyimpanan",["input","output"]],["Komponen apa yang dipasang untuk mendinginkan prosesor agar tidak terlalu panas?",["kipas","fan","heatsink","pendingin"],"Kipas / heatsink"],["Satuan yang dipakai untuk menyatakan kecepatan prosesor adalah …",["hertz","hz"],"Hertz (Hz/GHz)"],["Kartu apa yang bertugas memproses tampilan grafis, gambar, dan video? (nama umum)",["vga","gpu","kartugrafis"],"VGA / GPU (kartu grafis)"],["Alat yang dipakai untuk membaca atau memutar CD/DVD di komputer disebut …",["opticaldrive","cdrom","dvdrom","cddrive","dvddrive","cdroom"],"Optical drive (CD/DVD-ROM)"]];
+const TS=[["Software yang mengatur semua hardware dan aplikasi agar komputer dapat bekerja disebut …",["sistemoperasi","operatingsystem"],"Sistem operasi"],["Apa nama sistem operasi buatan Microsoft yang paling banyak dipakai di komputer?",["windows"],"Windows"],["Apa nama sistem operasi HP yang dikembangkan oleh Google?",["android"],"Android"],["Apa nama sistem operasi buatan Apple yang dipakai di iPhone?",["ios"],"iOS"],["Apa bahasa Inggris dari 'perangkat lunak'?",["software"],"Software"],["Software yang dipakai untuk membuka halaman web di internet disebut …",["browser","peramban"],"Browser / peramban"],["Software pelindung komputer dari virus disebut …",["antivirus"],"Antivirus"],["Microsoft Excel termasuk software pengolah …?",["angka","spreadsheet","lembarkerja"],"Pengolah angka (spreadsheet)"],["Microsoft PowerPoint termasuk software pengolah …?",["presentasi"],"Pengolah presentasi"],["Microsoft Word termasuk software pengolah …?",["kata","dokumen"],"Pengolah kata"],["Software yang kode programnya boleh dilihat dan diubah orang lain disebut software …?",["opensource","sumberterbuka"],"Open source"],["Apa nama sistem operasi gratis dan open source yang berlogo penguin?",["linux"],"Linux"],["Apa nama program yang menerjemahkan kode program menjadi bahasa mesin?",["compiler","kompilator"],"Compiler"],["Kumpulan instruksi yang ditulis pemrogram agar komputer melakukan tugas tertentu disebut …",["program"],"Program"]];
+const B={hi:[],si:[],th:[],ts:[],dr:[]},QID={};
+function add(list,q){list.push(q);QID[q.id]=q}
+HW.forEach(h=>{add(B.hi,{id:"hn-"+h[0],k:h[0],svg:gbr(h[1]),q:"Apa nama alat (hardware) pada gambar di atas?",ok:h[2],no:[],kunci:h[4]});
+ if(h[3])add(B.hi,{id:"hj-"+h[0],k:h[0],svg:gbr(h[1]),q:"Alat pada gambar di atas termasuk jenis hardware apa? Jawab dengan satu kata: input, output, atau penyimpanan.",ok:[h[3]],no:J.filter(x=>x!==h[3]),kunci:h[3]});
+ add(B.dr,{id:"d-"+h[0],k:h[0],dr:1,svg:"",q:"Gambarlah sebuah "+h[4]+" di kertas dengan gambar sederhana, lalu beri tulisan nama alatnya di dekat gambar. Foto hasil gambarmu, lalu unggah di kolom bawah.",ok:[],no:[],kunci:"Periksa gambar: bentuk "+h[4]+" mudah dikenali dan diberi nama."})});
+add(B.dr,{id:"d-usb",k:"usb",dr:1,svg:"",q:"Gambarlah sebuah Flashdisk (USB) di kertas dengan gambar sederhana, lalu beri tulisan nama alatnya di dekat gambar. Foto hasil gambarmu, lalu unggah di kolom bawah.",ok:[],no:[],kunci:"Periksa gambar: bentuk flashdisk mudah dikenali dan diberi nama."});
+TH.forEach((t,i)=>add(B.th,{id:"th-"+i,k:"th"+i,svg:"",q:t[0],ok:t[1],no:t[3]||[],kunci:t[2]}));
+TS.forEach((t,i)=>add(B.ts,{id:"ts-"+i,k:"ts"+i,svg:"",q:t[0],ok:t[1],no:[],kunci:t[2]}));
+
+function cek(q,a){if(q.dr)return null;const x=nz(a);if(!x)return false;return q.ok.some(k=>x.includes(nz(k)))&&!q.no.some(k=>x.includes(nz(k)))}
+function pick(arr,n,r,used){const o=[];for(const q of shuf(arr,r)){if(o.length>=n)break;if(used.has(q.k))continue;used.add(q.k);o.push(q)}return o}
+function build(name,kelas){
+ const r=rng(hash(norm(name)+"|"+KODE)),used=new Set();
+ const dr=pick(B.dr,1,r,used);
+ const qs=shuf([].concat(dr,pick(B.hi,5,r,used),pick(B.th,6,r,used),pick(B.ts,3,r,used)),r);
+ return{name:name.trim(),kelas:(kelas||"").trim(),qs,ans:qs.map(()=>""),ph:qs.map(()=>[]),cur:0,done:false,conf:false,stamp:"",msg:""}}
+
+/* ===== PENYIMPANAN LOKAL ===== */
+let S=null,DL=null;const app=$("app");
+const sk=()=>"ujian:"+KODE+":"+norm(S.name);
+function save(){try{localStorage.setItem(sk(),JSON.stringify({a:S.ans,p:S.ph,c:S.cur,d:S.done,t:S.stamp,k:S.kelas}))}catch(e){}}
+function load(){try{return JSON.parse(localStorage.getItem(sk()))}catch(e){return null}}
+const go=()=>window.scrollTo(0,0);
+const isDone=i=>S.qs[i].dr?S.ph[i].length>0:!!S.ans[i].trim();
+
+/* ===== HALAMAN SISWA ===== */
+function rStart(msg){
+ app.innerHTML='<p class="tag">&gt; ujian.hardware_software()</p><p class="big">Halo! Siap ujian?</p><p class="sub">'+esc(JUDUL)+' · '+esc(SUB)+'</p>'+
+ '<div class="field"><label for="nama">Nama lengkap</label><input id="nama" type="text" maxlength="60" placeholder="Tulis namamu di sini"></div>'+
+ '<div class="field"><label for="kelas">Kelas</label><input id="kelas" type="text" maxlength="20" placeholder="Contoh: VII-4"></div>'+
+ '<p class="err" id="err" role="alert">'+esc(msg||"")+'</p><button class="btn w" data-a="start">Mulai mengerjakan</button>'+
+ '<p class="small" style="margin-top:24px">Ada '+N+' soal uraian tentang hardware dan software: 14 soal dijawab dengan tulisan singkat (11 soal hardware, 3 soal software) dan 1 soal menggambar (jawabannya berupa foto yang diunggah). Soal tiap siswa berbeda-beda.</p>'+
+ '<button class="link" data-a="guru">Mode guru</button>';
+ $("kelas").addEventListener("keydown",e=>{if(e.key==="Enter")start()})}
+function start(){
+ const n=$("nama").value,k=$("kelas").value;
+ if(!n.trim())return $("err").textContent="Tulis namamu dulu.";
+ if(!k.trim())return $("err").textContent="Tulis kelasmu dulu.";
+ S=build(n,k);const d=load();
+ if(d&&Array.isArray(d.a)&&d.a.length===N){S.ans=d.a;S.ph=d.p;S.cur=Math.min(d.c||0,N-1);S.done=!!d.d;S.stamp=d.t||"";S.kelas=d.k||S.kelas}
+ render()}
+function render(){S.done?rDone():rQuiz();go()}
+function rQuiz(){
+ const i=S.cur,q=S.qs[i],last=i===N-1,ph=S.ph[i];
+ const dots=S.qs.map((_,k)=>'<button class="dot'+(isDone(k)?' d':'')+(k===i?' c':'')+'" data-a="go" data-i="'+k+'" aria-label="Soal '+(k+1)+'">'+(k+1)+'</button>').join("");
+ const miss=S.qs.map((_,k)=>k+1).filter(k=>!isDone(k-1));
+ const jw=q.dr?'<div class="box"><b>Unggah foto gambarmu</b><p class="small">Gambar di kertas, foto dengan jelas, lalu unggah (maksimal '+MAKS_FOTO+' foto).</p>'+
+  '<input type="file" id="berkas" accept="image/*" multiple hidden><button class="btn g s" style="margin-top:10px" data-a="pick"'+(ph.length>=MAKS_FOTO?' disabled':'')+'>Unggah foto ('+ph.length+'/'+MAKS_FOTO+')</button>'+
+  '<div class="th">'+ph.map((d,k)=>'<div><img src="'+d+'" alt="Foto '+(k+1)+'"><button class="btn g s" data-a="del" data-i="'+k+'">Hapus</button></div>').join("")+'</div><p class="small" id="msg">'+esc(S.msg)+'</p></div>'
+  :'<label class="q" for="jw" style="display:block;font-size:15px;font-weight:600;margin-top:18px">Jawabanmu</label><textarea id="jw" placeholder="Tulis jawabanmu di sini">'+esc(S.ans[i])+'</textarea>';
+ app.innerHTML='<div style="font-size:22px;font-weight:700">'+esc(S.name)+' <span class="small">('+esc(S.kelas)+')</span></div><nav class="dots">'+dots+'</nav>'+
+ '<p class="small" style="margin-top:22px">Soal '+(i+1)+' dari '+N+'</p>'+(q.svg?'<div class="gb">'+q.svg+'</div>':'')+'<h2 class="q">'+esc(q.q)+'</h2>'+jw+
+ '<div class="foot"><button class="btn g" data-a="prev"'+(i?'':' disabled')+'>Sebelumnya</button>'+(last?'<button class="btn" data-a="fin">Selesai</button>':'<button class="btn" data-a="next">Lanjut</button>')+'</div>'+
+ (S.conf?'<div class="box" style="border-color:var(--mar)"><p>Belum terisi: soal '+miss.join(", ")+'.</p><div class="foot"><button class="btn g" data-a="cancel">Cek lagi</button><button class="btn" data-a="fnow">Tetap selesai</button></div></div>':'')}
+function now(){try{return new Date().toLocaleString("id-ID",{dateStyle:"full",timeStyle:"short"})}catch(e){return String(new Date())}}
+function fin(){S.done=true;S.conf=false;S.stamp=now();save();render()}
+function rDone(){
+ app.innerHTML='<div style="font-size:22px;font-weight:700">'+esc(S.name)+' <span class="small">('+esc(S.kelas)+')</span></div><p class="big">Lembar jawabanmu siap</p><p class="sub">'+esc(S.stamp)+'</p>'+
+ '<p style="margin-top:18px">Tekan <b>Simpan lembar jawaban</b>, lalu kirim file itu ke gurumu. Nilai akan diberikan oleh gurumu.</p>'+
+ '<button class="btn w" data-a="sheet">Simpan lembar jawaban</button><button class="btn g w" data-a="edit">Ubah jawaban</button><p class="small" id="st" style="margin-top:12px"></p><div class="thanks">Terima kasih sudah berusaha, anakku. 🌟<br>Apa pun hasilnya, kamu sudah berani mengerjakan dengan jujur. Terus semangat belajar, kamu pasti bisa jadi lebih hebat!</div>'}
+function sheetHtml(){
+ const d={v:1,nama:S.name,kelas:S.kelas,waktu:S.stamp,qs:S.qs.map((q,i)=>({id:q.id,a:S.ans[i],p:S.ph[i]}))};
+ const j=JSON.stringify(d).replace(/</g,"\\u003c");
+ const items=S.qs.map((q,i)=>'<section><h2>Soal '+(i+1)+'</h2><p><b>'+esc(q.q)+'</b></p>'+(q.dr?'':'<pre>'+esc(S.ans[i]||"(tidak dijawab)")+'</pre>')+S.ph[i].map(p=>'<img src="'+p+'" style="max-width:100%">').join("")+'</section>').join("")+'<p><b>Terima kasih sudah berusaha, anakku. Terus semangat belajar!</b></p>';
+ return '<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+esc(JUDUL)+' - '+esc(S.name)+'</title><style>body{font-family:system-ui,sans-serif;max-width:720px;margin:0 auto;padding:20px;line-height:1.5}section{border-top:2px solid #ccd;padding:12px 0}pre{white-space:pre-wrap;background:#f1f4fa;padding:10px;border-radius:8px}</style></head><body><h1>'+esc(JUDUL)+' ('+esc(SUB)+')</h1><p><b>'+esc(S.name)+' ('+esc(S.kelas)+')</b><br>'+esc(S.stamp)+'</p>'+items+'<script type="application/json" id="d">'+j+'<\/script></body></html>'}
+async function saveFile(name,data,type,st){
+ const blob=new Blob([data],{type});
+ try{
+  if(DL)await DL.save({filename:name,data:blob});
+  else{const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
+  st.textContent="File disimpan. Cari di folder Unduhan, lalu kirim ke gurumu."}
+ catch(e){st.textContent=(e&&e.code==="declined")?"Belum disimpan. Tekan tombolnya lagi.":"File tidak bisa disimpan di sini."}}
+
+/* ===== FOTO ===== */
+function compress(f){return new Promise((res,rej)=>{const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{const k=Math.min(1,1100/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL("image/jpeg",.72))};im.onerror=()=>{URL.revokeObjectURL(u);rej()};im.src=u})}
+async function addFiles(files){
+ const i=S.cur;let note="";
+ for(const f of Array.from(files).slice(0,MAKS_FOTO-S.ph[i].length)){
+  if(!f.type||f.type.indexOf("image/")!==0){note="Hanya foto yang bisa diunggah.";continue}
+  try{S.ph[i].push(await compress(f))}catch(e){note="Foto tidak bisa dibuka."}}
+ S.msg=note;save();if(S.cur===i&&!S.done)rQuiz()}
+
+/* ===== MODE GURU ===== */
+const G={ok:false,rec:{},cur:null,msg:""};
+const FOTO=/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/;
+const num=v=>typeof v==="number"&&isFinite(v);
+const tot=a=>a.reduce((s,v)=>s+(num(v)?v:0),0);
+const nilai=a=>Math.round(tot(a)/(a.length*MAX)*100);
+const gk=k=>"skor:"+KODE+":"+k;
+function ldSk(k){try{return JSON.parse(localStorage.getItem(gk(k)))}catch(e){return null}}
+function svSk(r){try{localStorage.setItem(gk(r.key),JSON.stringify(r.sk))}catch(e){}}
+function initSk(r){const s=ldSk(r.key);if(Array.isArray(s)&&s.length===r.qs.length)return s;return r.qs.map(x=>{const q=QID[x.id];return(!q||q.dr)?null:(cek(q,x.a)?MAX:0)})}
+function parse(t){
+ const el=new DOMParser().parseFromString(t,"text/html").getElementById("d");if(!el)return null;
+ let d;try{d=JSON.parse(el.textContent)}catch(e){return null}
+ if(!d||typeof d.nama!=="string"||!Array.isArray(d.qs))return null;
+ return{nama:d.nama.slice(0,80),kelas:String(d.kelas||"").slice(0,30),waktu:String(d.waktu||"").slice(0,100),qs:d.qs.slice(0,20).map(x=>({id:String(x.id).slice(0,30),a:String(x.a||"").slice(0,5000),p:(Array.isArray(x.p)?x.p:[]).filter(s=>typeof s==="string"&&FOTO.test(s)).slice(0,3)}))}}
+async function openFiles(files){
+ let ok=0;const bad=[];
+ for(const f of Array.from(files)){
+  try{const d=parse(await f.text());if(!d){bad.push(f.name);continue}
+   const r={key:norm(d.nama),nama:d.nama,kelas:d.kelas,waktu:d.waktu,qs:d.qs};r.sk=initSk(r);G.rec[r.key]=r;ok++}catch(e){bad.push(f.name)}}
+ G.msg=ok+" file dimuat."+(bad.length?" Gagal dibaca: "+bad.join(", ")+".":"");rGuruHome()}
+const list=()=>Object.values(G.rec).sort((a,b)=>a.nama.localeCompare(b.nama,"id"));
+const drScore=r=>{const i=r.qs.findIndex(x=>QID[x.id]&&QID[x.id].dr);return i<0?null:r.sk[i]};
+function rGuruLogin(m){
+ app.innerHTML='<p class="big">Mode guru</p><p class="sub">Periksa jawaban murid dan nilai gambar.</p><div class="field"><label for="kg">Kode guru</label><input id="kg" type="password"></div><p class="err">'+esc(m||"")+'</p><div class="foot"><button class="btn g" data-a="back">Kembali</button><button class="btn" data-a="gogo">Masuk</button></div>';
+ $("kg").addEventListener("keydown",e=>{if(e.key==="Enter")gogo()});go()}
+function gogo(){if($("kg").value!==KODE_GURU)return rGuruLogin("Kode guru salah.");G.ok=true;rGuruHome()}
+function rGuruHome(){
+ const l=list();
+ app.innerHTML='<p class="big">Mode guru</p><input type="file" id="gf" accept=".html,text/html" multiple hidden><button class="btn w" data-a="gopen">Buka file jawaban murid</button><p class="small" style="margin-top:10px">'+esc(G.msg)+'</p>'+
+ (l.length?'<h2 style="margin-top:22px;font-size:18px">Murid ('+l.length+')</h2><ul class="list">'+l.map(r=>'<li><button class="btn" data-a="murid" data-k="'+esc(r.key)+'"><span>'+esc(r.nama)+' <small>('+esc(r.kelas||"-")+')</small></span><span class="small">'+(num(drScore(r))?'Nilai '+nilai(r.sk):'Gambar belum dinilai')+'</span></button></li>').join("")+'</ul><button class="btn g w" data-a="rekap">Rekap nilai</button>':'<p class="small" style="margin-top:20px">Belum ada file murid. Pilih satu atau beberapa file sekaligus.</p>')+
+ '<div class="box"><b>Lihat soal dan kunci dari nama</b><div class="field" style="margin-top:6px"><input id="gn" type="text" placeholder="Nama murid (persis seperti diketik)" aria-label="Nama murid"></div><button class="btn g s" data-a="kunci">Lihat kunci</button><p class="err" id="ge"></p></div><button class="link" data-a="back">Kembali ke halaman murid</button>';go()}
+function qBlock(q,a,ph,i,sc){
+ return '<section class="item"><h2 style="font-size:17px">Soal '+(i+1)+' <span class="small">'+esc(q.id)+'</span></h2>'+(q.svg?'<div class="gb" style="max-width:170px">'+q.svg+'</div>':'')+'<p class="q" style="font-size:16px">'+esc(q.q)+'</p><div class="key"><b>Kunci:</b> '+esc(q.kunci)+'</div>'+(a===null?'':(q.dr?'':'<p class="small" style="margin-top:10px">Jawaban murid</p><div class="ans">'+(a.trim()?esc(a):'<span class="no">Tidak dijawab</span>')+'</div><p style="margin-top:6px" class="'+(cek(q,a)?'ok':'no')+'">Cek otomatis: '+(cek(q,a)?'benar':'salah')+'</p>')+(q.dr?(ph.length?ph.map(p=>'<img class="f" src="'+p+'" alt="Gambar murid">').join(""):'<p class="no" style="margin-top:10px">Tidak ada foto gambar</p>'):''))+sc+'</section>'}
+function rMurid(k){
+ const r=G.rec[k];if(!r)return rGuruHome();G.cur=r;
+ const cocok=build(r.nama,"").qs.map(q=>q.id).join(",")===r.qs.map(x=>x.id).join(",");
+ app.innerHTML='<button class="link" style="margin-top:0" data-a="home">← Daftar murid</button><div style="font-size:22px;font-weight:700">'+esc(r.nama)+' <span class="small">('+esc(r.kelas||"-")+')</span></div><p class="small">'+esc(r.waktu)+'</p>'+
+ '<p class="'+(cocok?'ok':'no')+'" style="margin-top:8px">'+(cocok?'Kode soal sesuai dengan nama murid.':'Perhatian: soal di file ini tidak cocok dengan soal untuk nama ini (nama beda ketik, file diubah, atau kode ujian berganti).')+'</p>'+
+ r.qs.map((x,i)=>{const q=QID[x.id];if(!q)return'<section class="item"><p class="no">Soal '+esc(x.id)+' tidak ada di bank soal.</p></section>';
+  const sc='<div class="sr"><label for="sk'+i+'"><b>Skor</b></label><input id="sk'+i+'" type="number" min="0" max="'+MAX+'" step="0.5" data-sk="'+i+'" value="'+(num(r.sk[i])?r.sk[i]:'')+'"><span>dari '+MAX+'</span><button class="btn g s" data-a="full" data-i="'+i+'">Penuh</button><button class="btn g s" data-a="zero" data-i="'+i+'">Nol</button></div>';
+  return qBlock(q,x.a,x.p,i,sc)}).join("")+
+ '<div class="bar"><span>Total</span><b id="tt"></b><span id="nn"></span></div>';upTot();go()}
+function upTot(){const s=G.cur.sk,g=s.filter(v=>!num(v)).length;$("tt").textContent=tot(s)+" / "+(s.length*MAX);$("nn").textContent="Nilai "+nilai(s)+(g?" ("+g+" soal belum dinilai)":"")}
+function setSk(i,v){G.cur.sk[i]=v;const e=$("sk"+i);if(e)e.value=v===null?"":v;svSk(G.cur);upTot()}
+function rKunci(n){
+ const T=build(n,"");
+ app.innerHTML='<button class="link" style="margin-top:0" data-a="home">← Kembali</button><div style="font-size:22px;font-weight:700">'+esc(T.name)+'</div><p class="small">Soal dan kunci jawaban siswa ini</p>'+T.qs.map((q,i)=>qBlock(q,null,[],i,"")).join("");go()}
+function rekapRows(){return list().map(r=>{const d=drScore(r);const teks=r.sk.reduce((s,v,i)=>(QID[r.qs[i].id]&&QID[r.qs[i].id].dr)?s:s+(num(v)?v:0),0);return[r.nama,r.kelas||"-",String(teks),num(d)?String(d):"",String(nilai(r.sk))]})}
+const rekapHead=["Nama","Kelas","Skor 14 soal tulisan","Skor gambar","Nilai (0-100)"];
+function rRekap(){
+ app.innerHTML='<button class="link" style="margin-top:0" data-a="home">← Daftar murid</button><p class="big">Rekap nilai</p><p class="sub">Skor maksimal '+MAX+' tiap soal ('+N+' soal = '+(N*MAX)+' poin).</p><div class="tw"><table><thead><tr>'+rekapHead.map(h=>'<th>'+h+'</th>').join("")+'</tr></thead><tbody>'+rekapRows().map(r=>'<tr>'+r.map(c=>'<td>'+esc(c)+'</td>').join("")+'</tr>').join("")+'</tbody></table></div><button class="btn w" data-a="csv">Unduh rekap (CSV)</button><p class="small" id="st" style="margin-top:10px"></p>';go()}
+function csvCell(v){return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+
+/* ===== AKSI ===== */
+app.addEventListener("input",e=>{
+ const t=e.target;
+ if(t.dataset&&t.dataset.sk!==undefined&&G.cur){let v=t.value.trim()===""?null:parseFloat(t.value);if(v!==null)v=isFinite(v)?Math.min(MAX,Math.max(0,v)):null;G.cur.sk[+t.dataset.sk]=v;svSk(G.cur);upTot();return}
+ if(t.id==="jw"&&S){S.ans[S.cur]=t.value;const d=app.querySelector(".dot.c");if(d)d.classList.toggle("d",!!t.value.trim());save()}});
+app.addEventListener("change",e=>{
+ if(e.target.id==="gf"){openFiles(e.target.files).then(()=>{e.target.value=""});return}
+ if(e.target.id==="berkas"&&S)addFiles(e.target.files).then(()=>{e.target.value=""})});
+app.addEventListener("click",e=>{
+ const el=e.target.closest("[data-a]");if(!el)return;const a=el.dataset.a,i=+el.dataset.i;
+ if(a==="start")return start();
+ if(a==="guru")return G.ok?rGuruHome():rGuruLogin();
+ if(a==="back")return rStart();
+ if(a==="gogo")return gogo();
+ if(a==="home")return rGuruHome();
+ if(a==="gopen")return $("gf").click();
+ if(a==="murid")return rMurid(el.dataset.k);
+ if(a==="rekap")return rRekap();
+ if(a==="kunci"){const v=$("gn").value;if(!v.trim())return $("ge").textContent="Tulis nama murid dulu.";return rKunci(v)}
+ if(a==="full")return setSk(i,MAX);
+ if(a==="zero")return setSk(i,0);
+ if(a==="csv"){const c="\uFEFF"+[rekapHead].concat(rekapRows()).map(r=>r.map(csvCell).join(",")).join("\r\n");return saveFile("Rekap-Nilai-Informatika.csv",c,"text/csv",$("st"))}
+ if(!S)return;
+ if(a==="pick")return $("berkas").click();
+ if(a==="del"){S.ph[S.cur].splice(i,1);S.msg="";save();return rQuiz()}
+ if(a==="next"||a==="prev"||a==="go"){S.cur=a==="next"?Math.min(S.cur+1,N-1):a==="prev"?Math.max(S.cur-1,0):i;S.conf=false;S.msg="";save();return render()}
+ if(a==="fin"){if(S.qs.some((_,k)=>!isDone(k))){S.conf=true;return rQuiz()}return fin()}
+ if(a==="cancel"){S.conf=false;return rQuiz()}
+ if(a==="fnow")return fin();
+ if(a==="edit"){S.done=false;save();return render()}
+ if(a==="sheet")return saveFile("Jawaban-Informatika-"+(S.name.replace(/[^\p{L}\p{N}]+/gu,"-").replace(/^-+|-+$/g,"")||"siswa")+".html",sheetHtml(),"text/html",$("st"))});
+try{if(window.claude&&window.claude.use)window.claude.use("downloads").then(d=>{DL=d}).catch(()=>{})}catch(e){}
+rStart();
+</script></body></html>
