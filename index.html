@@ -40,7 +40,7 @@ table{border-collapse:collapse;min-width:100%;font-size:14px}th,td{padding:8px;b
 </style></head><body><main class="sheet" id="app"></main>
 <script>
 const JUDUL="Ujian Informatika",SUB="Hardware & Software",N=15,MAX=10,KODE_GURU="guru2026",KODE="hs-1",MAKS_FOTO=3;
-const URL_SHEET="PASTE_URL_WEB_APP_DI_SINI";
+const URL_SHEET="https://script.google.com/macros/s/AKfycbx_fPAFONDEgf0o-Gh0EdLFzsXmDCMN_2sTj37zNHY60s_qyd82_G6gq-QXw5KrNoPAzA/exec";
 const SHEET_ON=()=>URL_SHEET.indexOf("https://script.google.com/")===0;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -118,7 +118,7 @@ function kirimSheet(){
   const benar=teks.reduce((x,y)=>x+y,0);
   const foto=S.ph.reduce((x,p)=>x+p.length,0);
   const jawaban=S.qs.map((q,i)=>q.dr?"[GAMBAR] "+S.ph[i].length+" foto (cek di file jawaban murid)":(cek(q,S.ans[i])?"\u2713 ":"\u2717 ")+q.q+" => "+String(S.ans[i]||"(kosong)").slice(0,400));
-  fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:S.name,kelas:S.kelas,waktu:S.stamp,benar:benar,total:teks.length,foto:foto,jawaban:jawaban})}).catch(()=>{})
+  fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:S.name,kelas:S.kelas,waktu:S.stamp,benar:benar,total:teks.length,foto:foto,jawaban:jawaban,kunci:S.qs.map(q=>String(q.kunci||"")),cek:S.qs.map((q,i)=>q.dr?"":(cek(q,S.ans[i])?1:0))})}).catch(()=>{})
  }catch(e){}}
 function fin(){S.done=true;S.conf=false;S.stamp=now();save();kirimSheet();render()}
 function rDone(){
